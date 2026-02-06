@@ -1,0 +1,275 @@
+<section class="hero" @heroAnimation>
+  <img src="../../../assets/images/bmw.jpeg" alt="Voiture premium" class="hero-bg">
+  <div class="glass-overlay"></div>
+
+  <div class="hero-content">
+    <div class="glass-card">
+      <h2 class="brand">Coumba Car Services</h2>
+
+      <h1>
+        Nous ne vendons pas des voitures.<br> <span>Nous changeons la manière de les importer.</span>
+      </h1>
+
+      <div class="hero-buttons">
+        <button class="btn-primary">Nos Services</button>
+        <button class="btn-outline">Réserver maintenant</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="section-title"
+       data-animate="aboutTitle"
+       [@fadeInUp]="sectionStates['aboutTitle']">
+    <span>Qui sommes-nous</span>
+  </div>
+</section>
+
+<section class="about-content">
+  <div class="about-image"
+       data-animate="aboutImage"
+       [@slideInLeft]="sectionStates['aboutImage']">
+    <img src="assets/images/ccs-about.png" alt="Coumba Car Services">
+  </div>
+
+  <div class="about-text"
+       data-animate="aboutText"
+       [@slideInRight]="sectionStates['aboutText']">
+    <h3>Une vision moderne de l'automobile</h3>
+
+    <p class="lead">
+      <span class="brand-highlight">Coumba Car Services</span> est une agence spécialisée dans
+      l'import et l'export de véhicules, pensée pour celles et ceux
+      qui exigent plus qu'un simple moyen de transport.<br>
+
+      Experts dans la sélection et l'acheminement de véhicules depuis l'international,
+      nous gérons chaque étape avec rigueur afin de garantir performance,
+      élégance et fiabilité à l'arrivée.<br>
+
+      Notre mission est simple : vous offrir une expérience automobile
+      fluide, transparente et sans compromis, de la commande à la livraison.<br>
+
+      De l'accompagnement personnalisé aux formalités d'importation,
+      chaque détail compte, parce qu'une voiture n'est pas qu'un véhicule,
+      c'est une signature, un statut, une promesse.
+    </p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="section-title"
+       data-animate="servicesTitle"
+       [@fadeInUp]="sectionStates['servicesTitle']">
+    <span>Nos Services</span>
+  </div>
+</section>
+
+<section class="services-grid">
+  <div class="service-card dark"
+       data-animate="service1"
+       [@scaleIn]="sectionStates['service1']">
+    <h3>Recherche du véhicule</h3>
+    <span class="service-subtitle">Vous exprimez, nous trouvons</span>
+    <p>
+      Vous nous faites part de vos besoins, de votre budget et de vos préférences.
+      Notre équipe se charge ensuite d'identifier le véhicule idéal grâce à notre
+      réseau international de partenaires fiables et certifiés.
+      Vous gagnez du temps, nous faisons le travail.
+    </p>
+  </div>
+
+  <div class="service-card image"
+       data-animate="service2"
+       [@scaleIn]="sectionStates['service2']">
+    <img src="assets/images/recherche.avif" alt="Recherche véhicule">
+  </div>
+
+  <div class="service-card image"
+       data-animate="service3"
+       [@scaleIn]="sectionStates['service3']">
+    <img src="assets/images/mecano.png" alt="Contrôle véhicule">
+  </div>
+
+  <div class="service-card dark"
+       data-animate="service4"
+       [@scaleIn]="sectionStates['service4']">
+    <h3>Contrôle & conformité</h3>
+    <span class="service-subtitle">Chaque détail inspecté</span>
+    <p>
+      Avant toute expédition, chaque véhicule est soigneusement examiné.
+      État général, mécanique, conformité administrative et historique :
+      rien n'est laissé au hasard afin de garantir un véhicule fiable,
+      conforme et prêt à rouler dès son arrivée.
+    </p>
+  </div>
+
+  <div class="service-card dark"
+       data-animate="service5"
+       [@scaleIn]="sectionStates['service5']">
+    <h3>Import & Livraison</h3>
+    <span class="service-subtitle">Du monde à votre maison</span>
+    <p>
+      Nous prenons en charge l'ensemble du processus d'importation :
+      logistique, formalités douanières et acheminement.
+      Votre véhicule est livré en toute sérénité, sans stress,
+      ni démarches complexes à gérer de votre côté.
+    </p>
+  </div>
+
+  <div class="service-card image"
+       data-animate="service6"
+       [@scaleIn]="sectionStates['service6']">
+    <img src="assets/images/import.png" alt="Import véhicule">
+  </div>
+</section>
+
+<section class="about">
+  <div class="section-title"
+       data-animate="brandsTitle"
+       [@fadeInUp]="sectionStates['brandsTitle']">
+    <span>Nos Marques Disponibles</span>
+  </div>
+</section>
+
+<section class="brands-grid-2x3">
+  <div class="brand-tile"
+       data-animate="brand1"
+       [@zoomIn]="sectionStates['brand1']">
+    <img src="assets/images/bmw-car1.jpeg" alt="BMW">
+    <span class="brand-name">BMW</span>
+  </div>
+
+  <div class="brand-tile"
+       data-animate="brand2"
+       [@zoomIn]="sectionStates['brand2']">
+    <img src="assets/images/mercedes.png" alt="Mercedes">
+    <span class="brand-name">Mercedes</span>
+  </div>
+
+  <div class="brand-tile"
+       data-animate="brand3"
+       [@zoomIn]="sectionStates['brand3']">
+    <img src="assets/images/hyndai.png" alt="Hyundai">
+    <span class="brand-name">Hyundai</span>
+  </div>
+
+  <div class="brand-tile"
+       data-animate="brand4"
+       [@zoomIn]="sectionStates['brand4']">
+    <img src="assets/images/lexus.jpeg" alt="Jeep">
+    <span class="brand-name">Lexus</span>
+  </div>
+
+  <div class="brand-tile"
+       data-animate="brand5"
+       [@zoomIn]="sectionStates['brand5']">
+    <img src="assets/images/toyota.jpeg" alt="Toyota">
+    <span class="brand-name">Toyota</span>
+  </div>
+
+  <div class="brand-tile"
+       data-animate="brand6"
+       [@zoomIn]="sectionStates['brand6']">
+    <img src="assets/images/porshe.png" alt="Porshe">
+    <span class="brand-name">Porshe</span>
+  </div>
+</section>
+
+<section class="brands-more">
+  <p class="brands-more-title">
+    Un large choix de marques sélectionnées selon vos exigences . . .
+  </p>
+
+  <div class="brands-marquee">
+    <div class="brands-track">
+      <img src="assets/images/logos/3.jpeg" alt="Audi">
+      <img src="assets/images/logos/ford.jpeg" alt="Ford">
+      <img src="assets/images/logos/4.jpeg" alt="KIA">
+      <img src="assets/images/logos/5.jpeg" alt="Jeep">
+      <img src="assets/images/logos/6.jpeg" alt="Nissan">
+      <img src="assets/images/logos/7.jpeg" alt="Volkswagen">
+      <img src="assets/images/logos/8.jpeg" alt="Mazda">
+      <img src="assets/images/logos/9.jpeg" alt="Peugeot">
+      <img src="assets/images/logos/10.jpeg" alt="Audi">
+      <img src="assets/images/logos/11.jpeg" alt="Ford">
+      <img src="assets/images/logos/12.jpeg" alt="KIA">
+      <img src="assets/images/logos/13.jpeg" alt="Jeep">
+      <img src="assets/images/logos/14.jpeg" alt="Nissan">
+      <img src="assets/images/logos/Chevrolet.jpeg" alt="Volkswagen">
+      <img src="assets/images/logos/15.jpeg" alt="Mazda">
+      <img src="assets/images/logos/16.jpeg" alt="Peugeot">
+    </div>
+  </div>
+</section>
+
+<section class="values-full-line"
+         data-animate="valuesLine"
+         [@fadeInUp]="sectionStates['valuesLine']">
+  <span class="line edge"></span>
+  <span class="value">Transparence</span>
+  <span class="line mid"></span>
+  <span class="value">Sérénité</span>
+  <span class="line mid"></span>
+  <span class="value">Sécurité</span>
+  <span class="line edge"></span>
+</section>
+
+<section class="showroom-contact">
+  <div class="contact-left"
+       data-animate="contactForm"
+       [@fadeInUp]="sectionStates['contactForm']">
+    <h2>Réservez votre véhicule</h2>
+    <p class="subtitle">Dites-nous ce que vous cherchez, on s'occupe du reste.</p>
+
+    <form class="car-form">
+      <div class="row two-cols name-row">
+        <input type="text" placeholder="Prénom" required>
+        <input type="text" placeholder="Nom" required>
+      </div>
+
+      <div class="row">
+        <input type="tel" placeholder="Téléphone / WhatsApp" required>
+      </div>
+
+      <div class="row">
+        <label>Type de véhicule souhaité</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Citadine</label>
+          <label><input type="checkbox"> Berline</label>
+          <label><input type="checkbox"> SUV</label>
+          <label><input type="checkbox"> 4×4</label>
+          <label><input type="checkbox"> Utilitaires</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Transmission</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Manuelle</label>
+          <label><input type="checkbox"> Automatique</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <input type="text" placeholder="Vous avez un ou plusieurs modèles précis en tête ?">
+      </div>
+
+      <div class="row">
+        <label>Budget</label>
+        <select>
+          <option value="" disabled selected>Choisissez une tranche de budget</option>
+          <option>3 000 000 – 5 000 000 FCFA</option>
+          <option>5 000 000 – 8 000 000 FCFA</option>
+          <option>8 000 000 – 12 000 000 FCFA</option>
+          <option>12 000 000 – 15 000 000 FCFA</option>
+          <option>15 000 000 – 18 000 000 FCFA</option>
+          <option>+ 18 000 000 FCFA</option>
+        </select>
+      </div>
+
+      <button type="submit" class="cta-btn">Trouver mon véhicule</button>
+    </form>
+  </div>
+  <div class="contact-right"></div>
+</section>
