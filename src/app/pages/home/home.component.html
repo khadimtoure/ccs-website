@@ -222,42 +222,55 @@
     <h2>Réservez votre véhicule</h2>
     <p class="subtitle">Dites-nous ce que vous cherchez, on s'occupe du reste.</p>
 
-    <form class="car-form">
+    <form
+      class="car-form"
+      name="reservation-vehicule"
+      method="POST"
+      netlify
+    >
+
+      <!-- obligatoire pour Netlify -->
+      <input type="hidden" name="form-name" value="reservation-vehicule">
+
       <div class="row two-cols name-row">
-        <input type="text" placeholder="Prénom" required>
-        <input type="text" placeholder="Nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
+        <input type="text" name="nom" placeholder="Nom" required>
       </div>
 
       <div class="row">
-        <input type="tel" placeholder="Téléphone / WhatsApp" required>
+        <input type="tel" name="telephone" placeholder="Téléphone / WhatsApp" required>
       </div>
 
       <div class="row">
         <label>Type de véhicule souhaité</label>
         <div class="checkbox-group">
-          <label><input type="checkbox"> Citadine</label>
-          <label><input type="checkbox"> Berline</label>
-          <label><input type="checkbox"> SUV</label>
-          <label><input type="checkbox"> 4×4</label>
-          <label><input type="checkbox"> Utilitaires</label>
+          <label><input type="checkbox" name="typeVehicule[]" value="Citadine"> Citadine</label>
+          <label><input type="checkbox" name="typeVehicule[]" value="Berline"> Berline</label>
+          <label><input type="checkbox" name="typeVehicule[]" value="SUV"> SUV</label>
+          <label><input type="checkbox" name="typeVehicule[]" value="4x4"> 4×4</label>
+          <label><input type="checkbox" name="typeVehicule[]" value="Utilitaire"> Utilitaires</label>
         </div>
       </div>
 
       <div class="row">
         <label>Transmission</label>
         <div class="checkbox-group">
-          <label><input type="checkbox"> Manuelle</label>
-          <label><input type="checkbox"> Automatique</label>
+          <label><input type="checkbox" name="transmission[]" value="Manuelle"> Manuelle</label>
+          <label><input type="checkbox" name="transmission[]" value="Automatique"> Automatique</label>
         </div>
       </div>
 
       <div class="row">
-        <input type="text" placeholder="Vous avez un ou plusieurs modèles précis en tête ?">
+        <input
+          type="text"
+          name="modeleSouhaite"
+          placeholder="Vous avez un ou plusieurs modèles précis en tête ?"
+        >
       </div>
 
       <div class="row">
         <label>Budget</label>
-        <select>
+        <select name="budget" required>
           <option value="" disabled selected>Choisissez une tranche de budget</option>
           <option>3 000 000 – 5 000 000 FCFA</option>
           <option>5 000 000 – 8 000 000 FCFA</option>
@@ -268,8 +281,14 @@
         </select>
       </div>
 
-      <button type="submit" class="cta-btn">Trouver mon véhicule</button>
+      <button type="submit" class="cta-btn">
+        Trouver mon véhicule
+      </button>
+
     </form>
+
   </div>
+
+
   <div class="contact-right"></div>
 </section>
