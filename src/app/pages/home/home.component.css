@@ -699,6 +699,35 @@ input:focus, select:focus {
   box-shadow: 0 10px 40px rgba(238, 0, 0, 0.5);
 }
 
+.cta-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cta-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.form-success-message {
+  background: rgba(0, 180, 0, 0.15);
+  border: 1px solid rgba(0, 180, 0, 0.4);
+  border-radius: 10px;
+  padding: 16px 20px;
+  color: #6fdc6f;
+  font-size: 15px;
+}
+
+.form-error-message {
+  background: rgba(238, 0, 0, 0.15);
+  border: 1px solid rgba(238, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 16px 20px;
+  color: #ff6b6b;
+  font-size: 15px;
+}
+
 @media (max-width: 1024px) {
   .brand {
     font-size: 32px;

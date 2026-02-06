@@ -92,6 +92,9 @@ import { NgForOf } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
   years: number[] = [];
+  formSubmitting = false;
+  formSuccess = false;
+  formError = false;
 
   sectionStates: { [key: string]: string } = {
     aboutTitle: 'hidden',
@@ -149,5 +152,34 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+  }
+
+  onSubmit(event: Event): void {
+    event.preventDefault();
+    this.formSubmitting = true;
+    this.formSuccess = false;
+    this.formError = false;
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData as any).toString(),
+    })
+      .then((response) => {
+        if (response.ok) {
+          this.formSuccess = true;
+          form.reset();
+        } else {
+          this.formError = true;
+        }
+        this.formSubmitting = false;
+      })
+      .catch(() => {
+        this.formError = true;
+        this.formSubmitting = false;
+      });
   }
 }
