@@ -1,4 +1,4 @@
-<section class="hero" @heroAnimation>
+<section id="accueil" class="hero" @heroAnimation>
   <img src="../../../assets/images/bmw.jpeg" alt="Voiture premium" class="hero-bg">
   <div class="glass-overlay"></div>
 
@@ -18,7 +18,7 @@
   </div>
 </section>
 
-<section class="about">
+<section id="apropos" class="about">
   <div class="section-title"
        data-animate="aboutTitle"
        [@fadeInUp]="sectionStates['aboutTitle']">
@@ -57,7 +57,7 @@
   </div>
 </section>
 
-<section class="about">
+<section id="services" class="about">
   <div class="section-title"
        data-animate="servicesTitle"
        [@fadeInUp]="sectionStates['servicesTitle']">
@@ -65,7 +65,7 @@
   </div>
 </section>
 
-<section class="services-grid">
+<section  class="services-grid">
   <div class="service-card dark"
        data-animate="service1"
        [@scaleIn]="sectionStates['service1']">
@@ -215,7 +215,7 @@
   <span class="line edge"></span>
 </section>
 
-<section class="showroom-contact">
+<section id="contact" class="showroom-contact">
   <div class="contact-left"
        data-animate="contactForm"
        [@fadeInUp]="sectionStates['contactForm']">

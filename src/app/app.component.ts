@@ -27,4 +27,17 @@ export class AppComponent {
     this.menuOpen = false;
     document.body.style.overflow = '';
   }
+
+  scrollTo(sectionId: string): void {
+    this.closeMenu();
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
 }

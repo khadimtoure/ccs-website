@@ -6,16 +6,18 @@
 
 
     <nav class="nav-links" [class.active]="menuOpen">
-      <a routerLink="" (click)="closeMenu()">Accueil</a>
-      <a routerLink="" (click)="closeMenu()">À Propos</a>
-      <a routerLink="" (click)="closeMenu()">Services</a>
-      <a routerLink="" (click)="closeMenu()">Contacts</a>
-
+      <a (click)="scrollTo('accueil')">Accueil</a>
+      <a (click)="scrollTo('apropos')">À Propos</a>
+      <a (click)="scrollTo('services')">Services</a>
+      <a (click)="scrollTo('contact')">Contacts</a>
     </nav>
 
     <div class="actions">
-      <button class="call-btn">Réserver</button>
+      <button class="call-btn" (click)="scrollTo('contact')">
+        Réserver
+      </button>
     </div>
+
 
     <div class="hamburger" [class.active]="menuOpen" (click)="toggleMenu()">
       <span></span>
