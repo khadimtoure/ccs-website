@@ -10,6 +10,18 @@
 
 </head>
 <body>
+  <!-- Hidden form for Netlify Forms bot detection (required for JS-rendered SPAs) -->
+  <form name="reservation-vehicule" netlify netlify-honeypot="bot-field" hidden>
+    <input name="bot-field">
+    <input name="prenom">
+    <input name="nom">
+    <input name="telephone">
+    <input name="typeVehicule[]">
+    <input name="transmission[]">
+    <input name="modeleSouhaite">
+    <input name="budget">
+  </form>
+
   <app-root></app-root>
 </body>
 </html>
