@@ -1,1 +1,275 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* NAVBAR DESKTOP */
+.appbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1400px;
+  z-index: 1000;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.appbar-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 05px 20px;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.logo img {
+  height: 45px;
+  transition: height 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 90px;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: #ee0000;
+  transform: translateY(-2px);
+}
+
+.actions {
+  justify-self: end;
+}
+
+.call-btn {
+  background: #ee0000;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.call-btn:hover {
+  background: #c40000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(238, 0, 0, 0.4);
+}
+
+/* MENU HAMBURGER (caché par défaut) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  justify-self: end;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* RESPONSIVE TABLETTE (768px - 1024px) */
+@media (max-width: 1024px) {
+  .appbar {
+    width: 95%;
+  }
+
+  .nav-links {
+    gap: 40px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .call-btn {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+}
+
+/* RESPONSIVE MOBILE (max 768px) */
+@media (max-width: 768px) {
+  .appbar {
+    top: 10px;
+    width: 95%;
+    border-radius: 15px;
+  }
+
+  .appbar-content {
+    grid-template-columns: auto 1fr auto;
+    padding: 10px 15px;
+  }
+
+  .logo {
+    justify-self: start;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  /* Afficher le hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Cacher le menu desktop */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    gap: 30px;
+    padding: 100px 30px 30px;
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 20px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+  }
+
+  .actions {
+    display: none;
+  }
+
+  /* Bouton dans le menu mobile */
+  .nav-links::after {
+    content: '';
+    display: block;
+    margin-top: 20px;
+  }
+
+  .call-btn-mobile {
+    background: #ee0000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+}
+
+/* TRÈS PETIT MOBILE (max 480px) */
+@media (max-width: 480px) {
+  .appbar {
+    width: 92%;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .nav-links {
+    width: 80%;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+}
+
+/* Overlay pour fermer le menu */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .menu-overlay {
+    display: none;
+  }
+
+  .menu-overlay.active {
+    display: block;
+  }
+}
