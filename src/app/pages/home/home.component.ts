@@ -1,13 +1,15 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
 import { NgForOf } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   imports: [
-    NgForOf
+    NgForOf,
+    FormsModule
   ],
   animations: [
     trigger('heroAnimation', [
