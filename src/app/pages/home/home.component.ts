@@ -69,6 +69,44 @@ import { NgForOf } from '@angular/common';
 export class HomeComponent implements OnInit, OnDestroy {
   years: number[] = [];
 
+  // 1. ADD THIS METHOD
+  async handleSubmit(event: Event) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // Prepare JSON payload
+    const payload = {
+      prenom: formData.get('prenom'),
+      nom: formData.get('nom'),
+      telephone: formData.get('telephone'),
+      modeleSouhaite: formData.get('modeleSouhaite'),
+      budget: formData.get('budget'),
+      // Collect multiple checkbox values into arrays
+      typeVehicule: formData.getAll('typeVehicule'),
+      transmission: formData.getAll('transmission')
+    };
+
+    try {
+      // REPLACE with your actual Cloudflare Worker URL
+      const response = await fetch('https://ccs-form-handler.bathilymouhamedabdallah.workers.dev/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert('Merci ! Votre demande a été envoyée à contact@coumbacarservices.com');
+        form.reset();
+      } else {
+        throw new Error('Erreur serveur');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert("Une erreur est survenue. Veuillez nous contacter via Instagram ou LinkedIn.");
+    }
+  }
+
   // Swipe hint state
   showSwipeHint = false;
   private swipeHintDismissed = false;
@@ -93,7 +131,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     contactForm: 'hidden'
   };
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.generateYears();
