@@ -1,13 +1,16 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
-import { NgForOf } from '@angular/common';
+import { NgForOf,NgIf } from '@angular/common';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   imports: [
-    NgForOf
+    NgForOf,
+    NgIf,
+    ReactiveFormsModule
   ],
   animations: [
     trigger('heroAnimation', [
@@ -68,8 +71,10 @@ import { NgForOf } from '@angular/common';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   years: number[] = [];
+  reservationForm!: FormGroup;
+  formStatus: 'idle' | 'loading' | 'success' | 'error' = 'idle';
 
-  // Swipe hint state
+
   showSwipeHint = false;
   private swipeHintDismissed = false;
   private scrollListener!: () => void;
@@ -93,18 +98,69 @@ export class HomeComponent implements OnInit, OnDestroy {
     contactForm: 'hidden'
   };
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.generateYears();
     this.checkScroll();
     this.initSwipeHint();
+    this.initForm();
   }
 
   ngOnDestroy(): void {
     // Nettoyage de l'écouteur au destroy du composant
     if (this.scrollListener) {
       window.removeEventListener('scroll', this.scrollListener);
+    }
+  }
+
+  initForm(): void {
+    this.reservationForm = this.fb.group({
+      prenom:         ['', [Validators.required, Validators.minLength(2)]],
+      nom:            ['', [Validators.required, Validators.minLength(2)]],
+      telephone:      ['', [Validators.required, Validators.pattern(/^[+\d\s]{8,15}$/)]],
+      typeVehicule:   [[], Validators.required],
+      transmission:   [[]],
+      modeleSouhaite: [''],
+      budget:         ['', Validators.required]
+    });
+  }
+
+  get f() { return this.reservationForm.controls; }
+
+  isInvalid(field: string): boolean {
+    const ctrl = this.reservationForm.get(field);
+    return !!(ctrl && ctrl.invalid && (ctrl.dirty || ctrl.touched));
+  }
+
+  onCheckboxChange(e: Event, controlName: string): void {
+    const checkbox = e.target as HTMLInputElement;
+    const current: string[] = this.reservationForm.get(controlName)?.value || [];
+    if (checkbox.checked) {
+      this.reservationForm.get(controlName)?.setValue([...current, checkbox.value]);
+    } else {
+      this.reservationForm.get(controlName)?.setValue(current.filter(v => v !== checkbox.value));
+    }
+    this.reservationForm.get(controlName)?.markAsTouched();
+  }
+
+  async onSubmit(): Promise<void> {
+    this.reservationForm.markAllAsTouched();
+    if (this.reservationForm.invalid) return;
+
+    this.formStatus = 'loading';
+
+    try {
+      const formData = new FormData();
+      formData.append('form-name', 'reservation-vehicule');
+      Object.entries(this.reservationForm.value).forEach(([key, value]) => {
+        formData.append(key, Array.isArray(value) ? (value as string[]).join(', ') : String(value));
+      });
+
+      const res = await fetch('/', {method: 'POST', body: formData});
+      this.formStatus = res.ok ? 'success' : 'error';
+    } catch {
+      this.formStatus = 'error';
     }
   }
 
@@ -164,4 +220,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  budgets = [
+    '3 000 000 – 5 000 000 FCFA',
+    '5 000 000 – 8 000 000 FCFA',
+    '8 000 000 – 12 000 000 FCFA',
+    '12 000 000 – 15 000 000 FCFA',
+    '15 000 000 – 18 000 000 FCFA',
+    '+ 18 000 000 FCFA'
+  ];
 }
