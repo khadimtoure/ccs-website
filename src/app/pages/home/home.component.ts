@@ -143,23 +143,46 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.reservationForm.get(controlName)?.markAsTouched();
   }
 
-  async onSubmit(): Promise<void> {
+  async handleSubmit(event: Event): Promise<void> {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // Mark form as touched for validation
     this.reservationForm.markAllAsTouched();
     if (this.reservationForm.invalid) return;
 
     this.formStatus = 'loading';
 
     try {
-      const formData = new FormData();
-      formData.append('form-name', 'reservation-vehicule');
-      Object.entries(this.reservationForm.value).forEach(([key, value]) => {
-        formData.append(key, Array.isArray(value) ? (value as string[]).join(', ') : String(value));
+      // Prepare JSON payload for Cloudflare Worker
+      const payload = {
+        prenom: formData.get('prenom'),
+        nom: formData.get('nom'),
+        telephone: formData.get('telephone'),
+        modeleSouhaite: formData.get('modeleSouhaite'),
+        budget: formData.get('budget'),
+        typeVehicule: formData.getAll('typeVehicule'),
+        transmission: formData.getAll('transmission')
+      };
+
+      const response = await fetch('https://ccs-form-handler.bathilymouhamedabdallah.workers.dev/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      const res = await fetch('/', {method: 'POST', body: formData});
-      this.formStatus = res.ok ? 'success' : 'error';
-    } catch {
+      if (response.ok) {
+        this.formStatus = 'success';
+        form.reset();
+        this.reservationForm.reset();
+        alert('Merci ! Votre demande a été envoyée à contact@coumbacarservices.com');
+      } else {
+        throw new Error('Erreur serveur');
+      }
+    } catch (error) {
       this.formStatus = 'error';
+      alert("Une erreur est survenue. Veuillez nous contacter via Instagram ou LinkedIn.");
     }
   }
 
