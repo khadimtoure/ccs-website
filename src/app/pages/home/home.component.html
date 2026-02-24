@@ -67,13 +67,78 @@
   </div>
 </section>
 
+
+<section class="directrice"
+         data-animate="directrice"
+         [@fadeInUp]="sectionStates['directrice']">
+
+  <div class="directrice__bg"></div>
+  <div class="directrice__grid"></div>
+  <div class="directrice__lines">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="directrice__dots"></div>
+  <div class="directrice__glow"></div>
+
+  <div class="directrice__photo-side">
+    <div class="directrice__photo-bg"></div>
+    <img src="assets/images/boss.png" alt="Directrice CCS" class="directrice__photo">
+    <div class="directrice__badge">
+      <div class="directrice__badge-line"></div>
+      <div class="directrice__badge-text">
+        <strong>Coumba Thioune</strong>
+        Fondatrice & Directrice
+      </div>
+    </div>
+  </div>
+
+  <div class="directrice__text-side">
+    <div class="directrice__deco-num">CCS</div>
+    <div class="directrice__right-accent"></div>
+
+    <div class="directrice__eyebrow">
+      <div class="directrice__eyebrow-line"></div>
+      <span class="directrice__eyebrow-text">Vision & Engagement</span>
+    </div>
+
+    <h2 class="directrice__title">
+      <em>Notre expertise</em>
+      <strong>ne s'arrête pas à importer des véhicules.</strong>
+    </h2>
+
+    <div class="directrice__sep">
+      <div class="directrice__sep-line"></div>
+      <div class="directrice__sep-diamond"></div>
+    </div>
+
+    <blockquote class="directrice__quote">
+      <p>" Nous avons réuni des professionnels du contrôle automobile, de la douane et de la logistique internationale,
+        tous engagés autour d’une même mission : protéger les consommateurs et apporter de la transparence dans un
+        marché qui en manque."</p>
+    </blockquote>
+
+    <p class="directrice__body">
+      <strong>Franco-sénégalaise</strong>, avec plusieurs années d'expérience
+      dans l'automobile, j'ai fondé CCS pour apporter ce qui manquait :
+      la transparence.<br>
+      Chaque véhicule est contrôlé, vérifié et suivi avec exigence,
+      pour protéger les acheteurs et sécuriser leur investissement.
+      Nous avons réuni des professionnels du contrôle automobile,
+      de la douane et de la logistique internationale — tous engagés
+      autour d'une même mission.<br><br>
+
+    </p>
+
+
+  </div>
+
+</section>
+
 <section id="services" class="about">
   <div class="section-title" data-animate="servicesTitle" [@fadeInUp]="sectionStates['servicesTitle']">
     <span>Nos Services</span>
   </div>
 </section>
-
-
 
 
 <section class="services-panels">
@@ -141,7 +206,6 @@
 </section>
 
 
-
 <section class="about">
   <div class="section-title" data-animate="brandsTitle" [@fadeInUp]="sectionStates['brandsTitle']">
     <span>Nos Marques Disponibles</span>
@@ -159,9 +223,11 @@
     <span class="brand-name">Mercedes</span>
   </div>
 
-  <div class="brand-tile" data-animate="brand3" [@zoomIn]="sectionStates['brand3']">
-    <img src="assets/images/hyndai.png" alt="Hyundai">
-    <span class="brand-name">Hyundai</span>
+  <div class="brand-tile"
+       data-animate="brand3"
+       [@zoomIn]="sectionStates['brand3']">
+    <img src="assets/images/Peugeot2.png" alt="Hyundai">
+    <span class="brand-name">Peugeot</span>
   </div>
 
   <div class="brand-tile" data-animate="brand4" [@zoomIn]="sectionStates['brand4']">
@@ -224,24 +290,53 @@
 
     <form class="car-form" (submit)="handleSubmit($event)" #reservationForm="ngForm">
 
+      <!-- Prénom / Nom -->
       <div class="row two-cols name-row">
-        <input type="text" name="prenom" placeholder="Prénom" required>
-        <input type="text" name="nom" placeholder="Nom" required>
+        <div class="field-wrap">
+          <input type="text" formControlName="prenom" placeholder="Prénom"
+                 [class.input-error]="isInvalid('prenom')">
+          <span class="error-msg" *ngIf="isInvalid('prenom')">Prénom requis</span>
+        </div>
+        <div class="field-wrap">
+          <input type="text" formControlName="nom" placeholder="Nom"
+                 [class.input-error]="isInvalid('nom')">
+          <span class="error-msg" *ngIf="isInvalid('nom')">Nom requis</span>
+        </div>
       </div>
 
+      <!-- Téléphone -->
       <div class="row">
-        <input type="tel" name="telephone" placeholder="Téléphone / WhatsApp" required>
+        <div class="field-wrap">
+          <input type="tel" formControlName="telephone"
+                 placeholder="Téléphone / WhatsApp"
+                 [class.input-error]="isInvalid('telephone')">
+          <span class="error-msg" *ngIf="isInvalid('telephone')">Numéro invalide</span>
+        </div>
       </div>
 
+      <!-- Type de véhicule -->
       <div class="row">
-        <label>Type de véhicule souhaité</label>
+        <label [class.label-error]="isInvalid('typeVehicule')">Type de véhicule souhaité</label>
         <div class="checkbox-group">
           <label><input type="checkbox" name="typeVehicule" value="Citadine"> Citadine</label>
           <label><input type="checkbox" name="typeVehicule" value="Berline"> Berline</label>
           <label><input type="checkbox" name="typeVehicule" value="SUV"> SUV</label>
           <label><input type="checkbox" name="typeVehicule" value="4x4"> 4×4</label>
           <label><input type="checkbox" name="typeVehicule" value="Utilitaire"> Utilitaires</label>
+          <label><input type="checkbox" value="Citadine"
+                        (change)="onCheckboxChange($event, 'typeVehicule')"> Citadine</label>
+          <label><input type="checkbox" value="Berline"
+                        (change)="onCheckboxChange($event, 'typeVehicule')"> Berline</label>
+          <label><input type="checkbox" value="SUV"
+                        (change)="onCheckboxChange($event, 'typeVehicule')"> SUV</label>
+          <label><input type="checkbox" value="4x4"
+                        (change)="onCheckboxChange($event, 'typeVehicule')"> 4×4</label>
+          <label><input type="checkbox" value="Utilitaire"
+                        (change)="onCheckboxChange($event, 'typeVehicule')"> Utilitaires</label>
         </div>
+        <span class="error-msg" *ngIf="isInvalid('typeVehicule')">
+      Sélectionnez au moins un type
+    </span>
       </div>
 
       <div class="row">
@@ -249,17 +344,32 @@
         <div class="checkbox-group">
           <label><input type="checkbox" name="transmission" value="Manuelle"> Manuelle</label>
           <label><input type="checkbox" name="transmission" value="Automatique"> Automatique</label>
+      <!-- Transmission -->
+      <div class="row">
+        <label>Transmission</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Manuelle"
+                        (change)="onCheckboxChange($event, 'transmission')"> Manuelle</label>
+          <label><input type="checkbox" value="Automatique"
+                        (change)="onCheckboxChange($event, 'transmission')"> Automatique</label>
         </div>
       </div>
 
+      <!-- Modèle -->
       <div class="row">
         <input type="text" name="modeleSouhaite" placeholder="Modèles précis ?">
+        <input type="text" formControlName="modeleSouhaite"
+               placeholder="Vous avez un ou plusieurs modèles précis en tête ?">
       </div>
 
+      <!-- Budget -->
       <div class="row">
         <label>Budget</label>
         <select name="budget" required>
           <option value="" disabled selected>Choisissez une tranche</option>
+        <label [class.label-error]="isInvalid('budget')">Budget</label>
+        <select formControlName="budget" [class.input-error]="isInvalid('budget')">
+          <option value="" disabled selected>Choisissez une tranche de budget</option>
           <option>3 000 000 – 5 000 000 FCFA</option>
           <option>5 000 000 – 8 000 000 FCFA</option>
           <option>8 000 000 – 12 000 000 FCFA</option>
@@ -267,9 +377,64 @@
           <option>15 000 000 – 18 000 000 FCFA</option>
           <option>+ 18 000 000 FCFA</option>
         </select>
+        <span class="error-msg" *ngIf="isInvalid('budget')">Veuillez choisir un budget</span>
       </div>
 
       <button type="submit" class="cta-btn">Trouver mon véhicule</button>
+      <!-- Bouton — TON design intact, juste disabled pendant envoi -->
+      <button type="submit" class="cta-btn"
+              [disabled]="formStatus === 'loading'">
+        <span *ngIf="formStatus !== 'loading'">Trouver mon véhicule</span>
+        <span *ngIf="formStatus === 'loading'" class="spinner"></span>
+      </button>
+
+      <!-- Feedback succès / erreur -->
+      <div class="form-feedback form-feedback--success" *ngIf="formStatus === 'success'">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2"/>
+          <path d="M8 12l3 3 5-5" stroke="#22c55e" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Demande envoyée !</strong>
+          <span>On revient vers vous très rapidement.</span>
+        </div>
+      </div>
+
+      <div class="form-feedback form-feedback--error" *ngIf="formStatus === 'error'">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#ee0000" stroke-width="2"/>
+          <path d="M12 8v4m0 4h.01" stroke="#ee0000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Une erreur est survenue</strong>
+          <span>Réessayez ou contactez-nous sur Instagram.</span>
+        </div>
+      </div>
+
+      <!-- Réseaux sociaux — inchangés -->
+      <div class="social-row">
+        <a href="https://www.instagram.com/ccs.eusn?igsh=angyYTc3eHA1dGYy" target="_blank"
+           class="social-btn social-btn--instagram">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.linkedin.com/company/ccseusn/" target="_blank"
+           class="social-btn social-btn--linkedin">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
 
     </form>
 
