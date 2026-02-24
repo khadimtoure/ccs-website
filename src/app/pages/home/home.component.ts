@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
-import { NgForOf } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { NgForOf,NgIf } from '@angular/common';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -10,8 +9,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   imports: [
-    NgForOf,
-    FormsModule
+    FormsModule,
     NgIf,
     ReactiveFormsModule
   ],
