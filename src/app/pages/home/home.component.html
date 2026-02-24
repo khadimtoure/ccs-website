@@ -1,5 +1,5 @@
-<section id="accueil" class="hero" @heroAnimation>
-  <img src="../../../assets/images/bmw.jpeg" alt="Voiture premium" class="hero-bg">
+<section @heroAnimation class="hero" id="accueil">
+  <img alt="Voiture premium" class="hero-bg" src="../../../assets/images/bmw.jpeg">
   <div class="glass-overlay"></div>
 
   <div class="hero-content">
@@ -13,8 +13,8 @@
 
 
       <div class="hero-buttons">
-        <button class="btn-primary" (click)="scrollTo('services')">Nos Services</button>
-        <button class="btn-outline" (click)="scrollTo('contact')">Réserver maintenant</button>
+        <button (click)="scrollTo('services')" class="btn-primary">Nos Services</button>
+        <button (click)="scrollTo('contact')" class="btn-outline">Réserver maintenant</button>
       </div>
 
     </div>
@@ -23,10 +23,9 @@
   <div class="swipe-hint" id="swipeHint">
     <div class="swipe-hint__line"></div>
     <div class="swipe-hint__icon">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M12 19V5M12 5L6 11M12 5L18 11"
-              stroke="white" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round"/>
+      <svg fill="none" viewBox="0 0 24 24">
+        <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2"/>
       </svg>
     </div>
     <span class="swipe-hint__text">Glisser vers le haut pour découvrir</span>
@@ -35,24 +34,18 @@
 
 </section>
 
-<section id="apropos" class="about">
-  <div class="section-title"
-       data-animate="aboutTitle"
-       [@fadeInUp]="sectionStates['aboutTitle']">
+<section class="about" id="apropos">
+  <div [@fadeInUp]="sectionStates['aboutTitle']" class="section-title" data-animate="aboutTitle">
     <span>Qui sommes-nous</span>
   </div>
 </section>
 
 <section class="about-content">
-  <div class="about-image"
-       data-animate="aboutImage"
-       [@slideInLeft]="sectionStates['aboutImage']">
-    <img src="assets/images/ccs-about.png" alt="Coumba Car Services">
+  <div [@slideInLeft]="sectionStates['aboutImage']" class="about-image" data-animate="aboutImage">
+    <img alt="Coumba Car Services" src="assets/images/ccs-about.png">
   </div>
 
-  <div class="about-text"
-       data-animate="aboutText"
-       [@slideInRight]="sectionStates['aboutText']">
+  <div [@slideInRight]="sectionStates['aboutText']" class="about-text" data-animate="aboutText">
     <h3>Une vision moderne de l'automobile</h3>
 
     <p class="lead">
@@ -75,9 +68,9 @@
 </section>
 
 
-<section class="directrice"
-         data-animate="directrice"
-         [@fadeInUp]="sectionStates['directrice']">
+<section [@fadeInUp]="sectionStates['directrice']"
+         class="directrice"
+         data-animate="directrice">
 
   <div class="directrice__bg"></div>
   <div class="directrice__grid"></div>
@@ -89,7 +82,7 @@
 
   <div class="directrice__photo-side">
     <div class="directrice__photo-bg"></div>
-    <img src="assets/images/boss.png" alt="Directrice CCS" class="directrice__photo">
+    <img alt="Directrice CCS" class="directrice__photo" src="assets/images/boss.png">
     <div class="directrice__badge">
       <div class="directrice__badge-line"></div>
       <div class="directrice__badge-text">
@@ -141,10 +134,8 @@
 
 </section>
 
-<section id="services" class="about">
-  <div class="section-title"
-       data-animate="servicesTitle"
-       [@fadeInUp]="sectionStates['servicesTitle']">
+<section class="about" id="services">
+  <div [@fadeInUp]="sectionStates['servicesTitle']" class="section-title" data-animate="servicesTitle">
     <span>Nos Services</span>
   </div>
 </section>
@@ -153,9 +144,7 @@
 <section class="services-panels">
 
 
-  <div class="panel panel--1"
-       data-animate="service1"
-       [@slideReveal]="sectionStates['service1']">
+  <div [@slideReveal]="sectionStates['service1']" class="panel panel--1" data-animate="service1">
     <div class="panel__bg"></div>
     <div class="panel__vignette"></div>
     <div class="panel__accent-line"></div>
@@ -175,9 +164,7 @@
 
   <div class="panel-divider"></div>
 
-  <div class="panel panel--2"
-       data-animate="service2"
-       [@slideReveal]="sectionStates['service2']">
+  <div [@slideReveal]="sectionStates['service2']" class="panel panel--2" data-animate="service2">
     <div class="panel__bg"></div>
     <div class="panel__vignette"></div>
     <div class="panel__accent-line"></div>
@@ -198,9 +185,7 @@
   <div class="panel-divider"></div>
 
 
-  <div class="panel panel--3"
-       data-animate="service3"
-       [@slideReveal]="sectionStates['service3']">
+  <div [@slideReveal]="sectionStates['service3']" class="panel panel--3" data-animate="service3">
     <div class="panel__bg"></div>
     <div class="panel__vignette"></div>
     <div class="panel__accent-line"></div>
@@ -222,53 +207,41 @@
 
 
 <section class="about">
-  <div class="section-title"
-       data-animate="brandsTitle"
-       [@fadeInUp]="sectionStates['brandsTitle']">
+  <div [@fadeInUp]="sectionStates['brandsTitle']" class="section-title" data-animate="brandsTitle">
     <span>Nos Marques Disponibles</span>
   </div>
 </section>
 
 <section class="brands-grid-2x3">
-  <div class="brand-tile"
-       data-animate="brand1"
-       [@zoomIn]="sectionStates['brand1']">
-    <img src="assets/images/bmw-car1.jpeg" alt="BMW">
+  <div [@zoomIn]="sectionStates['brand1']" class="brand-tile" data-animate="brand1">
+    <img alt="BMW" src="assets/images/bmw-car1.jpeg">
     <span class="brand-name">BMW</span>
   </div>
 
-  <div class="brand-tile"
-       data-animate="brand2"
-       [@zoomIn]="sectionStates['brand2']">
-    <img src="assets/images/mercedes.png" alt="Mercedes">
+  <div [@zoomIn]="sectionStates['brand2']" class="brand-tile" data-animate="brand2">
+    <img alt="Mercedes" src="assets/images/mercedes.png">
     <span class="brand-name">Mercedes</span>
   </div>
 
-  <div class="brand-tile"
-       data-animate="brand3"
-       [@zoomIn]="sectionStates['brand3']">
-    <img src="assets/images/Peugeot2.png" alt="Hyundai">
+  <div [@zoomIn]="sectionStates['brand3']"
+       class="brand-tile"
+       data-animate="brand3">
+    <img alt="Hyundai" src="assets/images/Peugeot2.png">
     <span class="brand-name">Peugeot</span>
   </div>
 
-  <div class="brand-tile"
-       data-animate="brand4"
-       [@zoomIn]="sectionStates['brand4']">
-    <img src="assets/images/lexus.jpeg" alt="Jeep">
+  <div [@zoomIn]="sectionStates['brand4']" class="brand-tile" data-animate="brand4">
+    <img alt="Jeep" src="assets/images/lexus.jpeg">
     <span class="brand-name">Lexus</span>
   </div>
 
-  <div class="brand-tile"
-       data-animate="brand5"
-       [@zoomIn]="sectionStates['brand5']">
-    <img src="assets/images/toyota.jpeg" alt="Toyota">
+  <div [@zoomIn]="sectionStates['brand5']" class="brand-tile" data-animate="brand5">
+    <img alt="Toyota" src="assets/images/toyota.jpeg">
     <span class="brand-name">Toyota</span>
   </div>
 
-  <div class="brand-tile"
-       data-animate="brand6"
-       [@zoomIn]="sectionStates['brand6']">
-    <img src="assets/images/porshe.png" alt="Porshe">
+  <div [@zoomIn]="sectionStates['brand6']" class="brand-tile" data-animate="brand6">
+    <img alt="Porshe" src="assets/images/porshe.png">
     <span class="brand-name">Porshe</span>
   </div>
 </section>
@@ -280,29 +253,27 @@
 
   <div class="brands-marquee">
     <div class="brands-track">
-      <img src="assets/images/logos/3.jpeg" alt="Audi">
-      <img src="assets/images/logos/ford.jpeg" alt="Ford">
-      <img src="assets/images/logos/4.jpeg" alt="KIA">
-      <img src="assets/images/logos/5.jpeg" alt="Jeep">
-      <img src="assets/images/logos/6.jpeg" alt="Nissan">
-      <img src="assets/images/logos/7.jpeg" alt="Volkswagen">
-      <img src="assets/images/logos/8.jpeg" alt="Mazda">
-      <img src="assets/images/logos/9.jpeg" alt="Peugeot">
-      <img src="assets/images/logos/10.jpeg" alt="Audi">
-      <img src="assets/images/logos/11.jpeg" alt="Ford">
-      <img src="assets/images/logos/12.jpeg" alt="KIA">
-      <img src="assets/images/logos/13.jpeg" alt="Jeep">
-      <img src="assets/images/logos/14.jpeg" alt="Nissan">
-      <img src="assets/images/logos/Chevrolet.jpeg" alt="Volkswagen">
-      <img src="assets/images/logos/15.jpeg" alt="Mazda">
-      <img src="assets/images/logos/16.jpeg" alt="Peugeot">
+      <img alt="Audi" src="assets/images/logos/3.jpeg">
+      <img alt="Ford" src="assets/images/logos/ford.jpeg">
+      <img alt="KIA" src="assets/images/logos/4.jpeg">
+      <img alt="Jeep" src="assets/images/logos/5.jpeg">
+      <img alt="Nissan" src="assets/images/logos/6.jpeg">
+      <img alt="Volkswagen" src="assets/images/logos/7.jpeg">
+      <img alt="Mazda" src="assets/images/logos/8.jpeg">
+      <img alt="Peugeot" src="assets/images/logos/9.jpeg">
+      <img alt="Audi" src="assets/images/logos/10.jpeg">
+      <img alt="Ford" src="assets/images/logos/11.jpeg">
+      <img alt="KIA" src="assets/images/logos/12.jpeg">
+      <img alt="Jeep" src="assets/images/logos/13.jpeg">
+      <img alt="Nissan" src="assets/images/logos/14.jpeg">
+      <img alt="Volkswagen" src="assets/images/logos/Chevrolet.jpeg">
+      <img alt="Mazda" src="assets/images/logos/15.jpeg">
+      <img alt="Peugeot" src="assets/images/logos/16.jpeg">
     </div>
   </div>
 </section>
 
-<section class="values-full-line"
-         data-animate="valuesLine"
-         [@fadeInUp]="sectionStates['valuesLine']">
+<section [@fadeInUp]="sectionStates['valuesLine']" class="values-full-line" data-animate="valuesLine">
   <span class="line edge"></span>
   <span class="value">Transparence</span>
   <span class="line mid"></span>
@@ -312,40 +283,34 @@
   <span class="line edge"></span>
 </section>
 
-<section id="contact" class="showroom-contact">
-  <div class="contact-left"
-       data-animate="contactForm"
-       [@fadeInUp]="sectionStates['contactForm']">
+<section class="showroom-contact" id="contact">
+  <div [@fadeInUp]="sectionStates['contactForm']" class="contact-left" data-animate="contactForm">
     <h2>Réservez votre véhicule</h2>
     <p class="subtitle">Dites-nous ce que vous cherchez, on s'occupe du reste.</p>
 
-    <form class="car-form" name="reservation-vehicule" method="POST" netlify
-          [formGroup]="reservationForm"
-          (ngSubmit)="onSubmit()">
-
-      <input type="hidden" name="form-name" value="reservation-vehicule">
+    <form #reservationForm="ngForm" (submit)="handleSubmit($event)" class="car-form">
 
       <!-- Prénom / Nom -->
       <div class="row two-cols name-row">
         <div class="field-wrap">
-          <input type="text" formControlName="prenom" placeholder="Prénom"
-                 [class.input-error]="isInvalid('prenom')">
-          <span class="error-msg" *ngIf="isInvalid('prenom')">Prénom requis</span>
+          <input [class.input-error]="isInvalid('prenom')" formControlName="prenom" placeholder="Prénom"
+                 type="text">
+          <span *ngIf="isInvalid('prenom')" class="error-msg">Prénom requis</span>
         </div>
         <div class="field-wrap">
-          <input type="text" formControlName="nom" placeholder="Nom"
-                 [class.input-error]="isInvalid('nom')">
-          <span class="error-msg" *ngIf="isInvalid('nom')">Nom requis</span>
+          <input [class.input-error]="isInvalid('nom')" formControlName="nom" placeholder="Nom"
+                 type="text">
+          <span *ngIf="isInvalid('nom')" class="error-msg">Nom requis</span>
         </div>
       </div>
 
       <!-- Téléphone -->
       <div class="row">
         <div class="field-wrap">
-          <input type="tel" formControlName="telephone"
+          <input [class.input-error]="isInvalid('telephone')" formControlName="telephone"
                  placeholder="Téléphone / WhatsApp"
-                 [class.input-error]="isInvalid('telephone')">
-          <span class="error-msg" *ngIf="isInvalid('telephone')">Numéro invalide</span>
+                 type="tel">
+          <span *ngIf="isInvalid('telephone')" class="error-msg">Numéro invalide</span>
         </div>
       </div>
 
@@ -353,18 +318,23 @@
       <div class="row">
         <label [class.label-error]="isInvalid('typeVehicule')">Type de véhicule souhaité</label>
         <div class="checkbox-group">
-          <label><input type="checkbox" value="Citadine"
-                        (change)="onCheckboxChange($event, 'typeVehicule')"> Citadine</label>
-          <label><input type="checkbox" value="Berline"
-                        (change)="onCheckboxChange($event, 'typeVehicule')"> Berline</label>
-          <label><input type="checkbox" value="SUV"
-                        (change)="onCheckboxChange($event, 'typeVehicule')"> SUV</label>
-          <label><input type="checkbox" value="4x4"
-                        (change)="onCheckboxChange($event, 'typeVehicule')"> 4×4</label>
-          <label><input type="checkbox" value="Utilitaire"
-                        (change)="onCheckboxChange($event, 'typeVehicule')"> Utilitaires</label>
+          <label><input name="typeVehicule" type="checkbox" value="Citadine"> Citadine</label>
+          <label><input name="typeVehicule" type="checkbox" value="Berline"> Berline</label>
+          <label><input name="typeVehicule" type="checkbox" value="SUV"> SUV</label>
+          <label><input name="typeVehicule" type="checkbox" value="4x4"> 4×4</label>
+          <label><input name="typeVehicule" type="checkbox" value="Utilitaire"> Utilitaires</label>
+          <label><input (change)="onCheckboxChange($event, 'typeVehicule')" type="checkbox"
+                        value="Citadine"> Citadine</label>
+          <label><input (change)="onCheckboxChange($event, 'typeVehicule')" type="checkbox"
+                        value="Berline"> Berline</label>
+          <label><input (change)="onCheckboxChange($event, 'typeVehicule')" type="checkbox"
+                        value="SUV"> SUV</label>
+          <label><input (change)="onCheckboxChange($event, 'typeVehicule')" type="checkbox"
+                        value="4x4"> 4×4</label>
+          <label><input (change)="onCheckboxChange($event, 'typeVehicule')" type="checkbox"
+                        value="Utilitaire"> Utilitaires</label>
         </div>
-        <span class="error-msg" *ngIf="isInvalid('typeVehicule')">
+        <span *ngIf="isInvalid('typeVehicule')" class="error-msg">
       Sélectionnez au moins un type
     </span>
       </div>
@@ -373,24 +343,25 @@
       <div class="row">
         <label>Transmission</label>
         <div class="checkbox-group">
-          <label><input type="checkbox" value="Manuelle"
-                        (change)="onCheckboxChange($event, 'transmission')"> Manuelle</label>
-          <label><input type="checkbox" value="Automatique"
-                        (change)="onCheckboxChange($event, 'transmission')"> Automatique</label>
+          <label><input (change)="onCheckboxChange($event, 'transmission')" type="checkbox"
+                        value="Manuelle"> Manuelle</label>
+          <label><input (change)="onCheckboxChange($event, 'transmission')" type="checkbox"
+                        value="Automatique"> Automatique</label>
         </div>
       </div>
 
       <!-- Modèle -->
       <div class="row">
-        <input type="text" formControlName="modeleSouhaite"
-               placeholder="Vous avez un ou plusieurs modèles précis en tête ?">
+        <input name="modeleSouhaite" placeholder="Modèles précis ?" type="text">
+        <input formControlName="modeleSouhaite" placeholder="Vous avez un ou plusieurs modèles précis en tête ?"
+               type="text">
       </div>
 
       <!-- Budget -->
       <div class="row">
-        <label [class.label-error]="isInvalid('budget')">Budget</label>
-        <select formControlName="budget" [class.input-error]="isInvalid('budget')">
-          <option value="" disabled selected>Choisissez une tranche de budget</option>
+        <label>Budget</label>
+        <select [class.input-error]="isInvalid('budget')" formControlName="budget">
+          <option disabled selected value="">Choisissez une tranche de budget</option>
           <option>3 000 000 – 5 000 000 FCFA</option>
           <option>5 000 000 – 8 000 000 FCFA</option>
           <option>8 000 000 – 12 000 000 FCFA</option>
@@ -398,22 +369,22 @@
           <option>15 000 000 – 18 000 000 FCFA</option>
           <option>+ 18 000 000 FCFA</option>
         </select>
-        <span class="error-msg" *ngIf="isInvalid('budget')">Veuillez choisir un budget</span>
+        <span *ngIf="isInvalid('budget')" class="error-msg">Veuillez choisir un budget</span>
       </div>
 
       <!-- Bouton — TON design intact, juste disabled pendant envoi -->
-      <button type="submit" class="cta-btn"
-              [disabled]="formStatus === 'loading'">
+      <button [disabled]="formStatus === 'loading'" class="cta-btn"
+              type="submit">
         <span *ngIf="formStatus !== 'loading'">Trouver mon véhicule</span>
         <span *ngIf="formStatus === 'loading'" class="spinner"></span>
       </button>
 
       <!-- Feedback succès / erreur -->
-      <div class="form-feedback form-feedback--success" *ngIf="formStatus === 'success'">
-        <svg viewBox="0 0 24 24" fill="none">
+      <div *ngIf="formStatus === 'success'" class="form-feedback form-feedback--success">
+        <svg fill="none" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2"/>
-          <path d="M8 12l3 3 5-5" stroke="#22c55e" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 12l3 3 5-5" stroke="#22c55e" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2"/>
         </svg>
         <div>
           <strong>Demande envoyée !</strong>
@@ -421,10 +392,10 @@
         </div>
       </div>
 
-      <div class="form-feedback form-feedback--error" *ngIf="formStatus === 'error'">
-        <svg viewBox="0 0 24 24" fill="none">
+      <div *ngIf="formStatus === 'error'" class="form-feedback form-feedback--error">
+        <svg fill="none" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" stroke="#ee0000" stroke-width="2"/>
-          <path d="M12 8v4m0 4h.01" stroke="#ee0000" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 8v4m0 4h.01" stroke="#ee0000" stroke-linecap="round" stroke-width="2"/>
         </svg>
         <div>
           <strong>Une erreur est survenue</strong>
@@ -434,29 +405,28 @@
 
       <!-- Réseaux sociaux — inchangés -->
       <div class="social-row">
-        <a href="https://www.instagram.com/ccs.eusn?igsh=angyYTc3eHA1dGYy" target="_blank"
-           class="social-btn social-btn--instagram">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+        <a class="social-btn social-btn--instagram" href="https://www.instagram.com/ccs.eusn?igsh=angyYTc3eHA1dGYy"
+           target="_blank">
+          <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2" width="20" x="2" y="2"/>
             <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            <circle cx="17.5" cy="6.5" fill="currentColor" r="1"/>
           </svg>
           Instagram
         </a>
-        <a href="https://www.linkedin.com/company/ccseusn/" target="_blank"
-           class="social-btn social-btn--linkedin">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a class="social-btn social-btn--linkedin" href="https://www.linkedin.com/company/ccseusn/"
+           target="_blank">
+          <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round"/>
+                  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <rect height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="4"
+                  x="2" y="9"/>
             <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
           </svg>
           LinkedIn
         </a>
-      </div>
-
-    </form>
+  </div>
+  </form>
 
   </div>
 
