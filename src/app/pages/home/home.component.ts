@@ -165,6 +165,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         modeleSouhaite: this.reservationForm.get('modeleSouhaite')?.value,
         budget: this.reservationForm.get('budget')?.value,
         typeVehicule: this.reservationForm.get('typeVehicule')?.value || [],
+        typeCarburant:this.reservationForm.get('typeCarburant')?.value || [],
         transmission: this.reservationForm.get('transmission')?.value || []
       };
 
