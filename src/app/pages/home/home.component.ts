@@ -146,26 +146,29 @@ export class HomeComponent implements OnInit, OnDestroy {
   async handleSubmit(event: Event): Promise<void> {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
-    const formData = new FormData(form);
 
-    // Mark form as touched for validation
+    // Mark all fields as touched for validation
     this.reservationForm.markAllAsTouched();
     if (this.reservationForm.invalid) return;
 
     this.formStatus = 'loading';
 
     try {
+      // Get FormData from the form element
+      const formData = new FormData(form);
+
       // Prepare JSON payload for Cloudflare Worker
       const payload = {
-        prenom: formData.get('prenom'),
-        nom: formData.get('nom'),
-        telephone: formData.get('telephone'),
-        modeleSouhaite: formData.get('modeleSouhaite'),
-        budget: formData.get('budget'),
-        typeVehicule: formData.getAll('typeVehicule'),
-        transmission: formData.getAll('transmission')
+        prenom: this.reservationForm.get('prenom')?.value,
+        nom: this.reservationForm.get('nom')?.value,
+        telephone: this.reservationForm.get('telephone')?.value,
+        modeleSouhaite: this.reservationForm.get('modeleSouhaite')?.value,
+        budget: this.reservationForm.get('budget')?.value,
+        typeVehicule: this.reservationForm.get('typeVehicule')?.value || [],
+        transmission: this.reservationForm.get('transmission')?.value || []
       };
 
+      // Send to Cloudflare Worker
       const response = await fetch('https://ccs-form-handler.bathilymouhamedabdallah.workers.dev/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -176,13 +179,18 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.formStatus = 'success';
         form.reset();
         this.reservationForm.reset();
-        alert('Merci ! Votre demande a été envoyée à contact@coumbacarservices.com');
+
+        // Scroll to success message
+        setTimeout(() => {
+          const successElement = document.querySelector('.form-feedback--success');
+          successElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 300);
       } else {
         throw new Error('Erreur serveur');
       }
     } catch (error) {
+      console.error('Submission error:', error);
       this.formStatus = 'error';
-      alert("Une erreur est survenue. Veuillez nous contacter via Instagram ou LinkedIn.");
     }
   }
 

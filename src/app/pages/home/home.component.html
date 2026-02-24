@@ -321,7 +321,7 @@
 
     <form class="car-form" name="reservation-vehicule" method="POST" netlify
           [formGroup]="reservationForm"
-          (ngSubmit)="onSubmit()">
+          (ngSubmit)="handleSubmit($event)">
 
       <input type="hidden" name="form-name" value="reservation-vehicule">
 
