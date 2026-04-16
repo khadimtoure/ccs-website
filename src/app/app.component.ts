@@ -6,7 +6,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
   templateUrl: './app.component.html',
   imports: [
     RouterOutlet,
-    RouterLink
+
   ],
   styleUrls: ['./app.component.css']
 })
