@@ -143,22 +143,54 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.reservationForm.get(controlName)?.markAsTouched();
   }
 
-  async onSubmit(): Promise<void> {
+  async handleSubmit(event: Event): Promise<void> {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+
+    // Mark all fields as touched for validation
     this.reservationForm.markAllAsTouched();
     if (this.reservationForm.invalid) return;
 
     this.formStatus = 'loading';
 
     try {
-      const formData = new FormData();
-      formData.append('form-name', 'reservation-vehicule');
-      Object.entries(this.reservationForm.value).forEach(([key, value]) => {
-        formData.append(key, Array.isArray(value) ? (value as string[]).join(', ') : String(value));
+      // Get FormData from the form element
+      const formData = new FormData(form);
+
+      // Prepare JSON payload for Cloudflare Worker
+      const payload = {
+        prenom: this.reservationForm.get('prenom')?.value,
+        nom: this.reservationForm.get('nom')?.value,
+        telephone: this.reservationForm.get('telephone')?.value,
+        modeleSouhaite: this.reservationForm.get('modeleSouhaite')?.value,
+        budget: this.reservationForm.get('budget')?.value,
+        typeVehicule: this.reservationForm.get('typeVehicule')?.value || [],
+        typeCarburant:this.reservationForm.get('typeCarburant')?.value || [],
+        transmission: this.reservationForm.get('transmission')?.value || []
+      };
+
+      // Send to Cloudflare Worker
+      const response = await fetch('https://ccs-form-handler.bathilymouhamedabdallah.workers.dev/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      const res = await fetch('/', {method: 'POST', body: formData});
-      this.formStatus = res.ok ? 'success' : 'error';
-    } catch {
+      if (response.ok) {
+        this.formStatus = 'success';
+        form.reset();
+        this.reservationForm.reset();
+
+        // Scroll to success message
+        setTimeout(() => {
+          const successElement = document.querySelector('.form-feedback--success');
+          successElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 300);
+      } else {
+        throw new Error('Erreur serveur');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
       this.formStatus = 'error';
     }
   }
